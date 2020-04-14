@@ -1,5 +1,5 @@
 # multi-consul-clients  
-python、go、java语言客户端使用consul作为注册中心互相访问   
+python、go、java语言客户端使用consul作为注册中心互相访问demo     
 
 ## gateway目录  
 `spring-cloud-gateway`demo,可以通过gateway来访问其他所有的服务，可以作为前端对接的入口  
