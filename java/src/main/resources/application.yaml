@@ -1,0 +1,18 @@
+server:
+  port: 8503
+spring:
+  application:
+    name: consul-java
+  cloud:
+    consul:
+      discovery:
+        healthCheckInterval: 3s
+        healthCheckPath: /actuator/health
+        hostname: 192.168.9.52
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        register: true
+        serviceName: ${spring.application.name}
+        tags: url-prefix-/${spring.application.name}
+      enabled: true
+      host: 192.168.8.227
+      port: 8500
