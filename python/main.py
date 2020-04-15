@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.logger import logger
 import consul
-import random
+from random import choice
 import requests
 import uuid
 
@@ -31,7 +31,7 @@ def get_other_instance_result(service_name, prefix_url):
     else:
         return "no instance"
     # 随机返回一个可用实例
-    instance_url = consul_service_instances[random.randint(0, len(consul_service_instances) - 1)]
+    instance_url = choice(consul_service_instances)
     print(instance_url)
     try:
         # 发起请求
@@ -53,7 +53,7 @@ async def hello_go():
     if result == "no instance" or result.startswith("ERROR:"):
         return {"message": "调用失败:%s" % result}
     else:
-        return {"message": result}
+        return result
 
 
 # 调用java
@@ -63,7 +63,7 @@ async def hello_java():
     if result == "no instance" or result.startswith("ERROR:"):
         return {"message": "调用失败:%s" % result}
     else:
-        return {"message": result}
+        return result
 
 
 # 关闭前自动解注册

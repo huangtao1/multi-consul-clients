@@ -27,7 +27,7 @@ func main() {
 		context.String(http.StatusOK, "ok")
 	})
 	router.GET("/go_user", func(context *gin.Context) {
-		context.String(http.StatusOK, "this is go")
+		context.JSON(http.StatusOK,gin.H{"message":"this is go"})
 	})
 	//调用python
 	router.GET("/hello_py", func(context *gin.Context) {
